@@ -27,12 +27,12 @@ fi
 
 # ── Build Config ─────────────────────────────────────────────────
 DEVICE="courbet"
-KNAME="一マShuSi"
-VAR="Oem"
+KNAME="𝘠𝘢𝘮𝘢𝘨𝘢𝘵𝘢"
+VAR="oem"
 
 ZIPNAME="${KNAME}-${VAR}.zip"
 
-ANYKERNEL_REPO="https://github.com/ZGSYet/AnyKernel3"
+ANYKERNEL_REPO="https://github.com/Aciss21/AnyKernel3.git"
 ANYKERNEL_BRANCH="master"
 
 # ── Toolchain Config ─────────────────────────────────────────────
@@ -442,10 +442,6 @@ sed -i \
 
 sed -i \
     "s/device\.name2=.*/device.name2=courbetin/" \
-    "$KERNEL_DIR/AnyKernel3/anykernel.sh"
-
-sed -i \
-    "s/kernel\.string=.*/kernel.string=${KNAME}/" \
     "$KERNEL_DIR/AnyKernel3/anykernel.sh"
 
 # ── Copy Kernel ──────────────────────────────────────────────────

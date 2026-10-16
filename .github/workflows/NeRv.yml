@@ -1,4 +1,4 @@
-name: Start NeRvon
+name: Unit EvaGC
 
 on:
   workflow_dispatch:

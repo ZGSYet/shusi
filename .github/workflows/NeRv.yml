@@ -1,11 +1,18 @@
-name: Start NeRvon
+name: Unit EvaGC
 
 on:
   workflow_dispatch:
 
 jobs:
-  Reforging:
+  Unit:
     runs-on: ubuntu-latest
+
+    env:                               
+      TG_TOKEN: ${{ secrets.TG_TOKEN }}
+      TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+      # (optional) also expose the same values under the fallback names
+      GITHUB_TG_TOKEN: ${{ secrets.TG_TOKEN }}
+      GITHUB_TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
 
     steps:
     - name: 🔄 Checkout Code
@@ -19,31 +26,15 @@ jobs:
     - name: 📦 Install Dependencies
       run: |
         sudo apt update -y
-        sudo apt install bc cpio flex bison aptitude git python-is-python3 tar aria2 perl wget curl lz4 libssl-dev -y
-
-    - name: 🔧 Clone Toolchains
-      run: |
-        mkdir clang && cd clang && curl -LO "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman" && chmod a+x antman && ./antman -S && ./antman --patch=glibc && cd ..
-        git clone https://github.com/greenforce-project/gcc-arm64 -b main --depth=1 gcc64
-        git clone https://github.com/greenforce-project/gcc-arm -b main --depth=1 gcc32
+        sudo apt install bc cpio flex bison aptitude git python-is-python3 \
+          tar aria2 perl wget curl lz4 libssl-dev -y
 
     - name: ⚙️ Setup Environment
       run: |
         echo "BUILD_TIME=$(TZ=Asia/Jakarta date '+%d%m%Y-%H%M')" >> $GITHUB_ENV
-        echo "CLANG_PATH=$GITHUB_WORKSPACE/clang" >> $GITHUB_ENV
-        echo "GCC64_PATH=$GITHUB_WORKSPACE/gcc64" >> $GITHUB_ENV
-        echo "GCC32_PATH=$GITHUB_WORKSPACE/gcc32" >> $GITHUB_ENV
 
-    - name: 📅 Set BUILD DATE
-      run: |
-        echo "BUILD_DATE='\"$(TZ=Asia/Jakarta date '+%b %d %Y')\"'" >> $GITHUB_ENV
-
-    - name: 🛠️ Build Kernel
-      run: |
+    - name: 📥 Build Kernel
+      run:  |
         curl -LSs "https://raw.githubusercontent.com/manipvlator/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
-        export ARCH=arm64
-        export PATH="$CLANG_PATH/bin:$GCC64_PATH/bin:$GCC32_PATH/bin:$PATH"
-        export KBUILD_COMPILER_STRING="$CLANG_PATH/clang"
-        export BUILD_DATE=$BUILD_DATE
-        export CFLAGS_EXTRA="-DBUILD_DATE=$BUILD_DATE"
-        bash copyright
+        bash COPYRIGHTS
+      # the env block above already makes TG_TOKEN/TG_CHAT_ID visible here

@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 # ================================================================
 #   Kernel Build Script - courbet
-#   Toolchain: Gonon Clang 16.0.6
+#   Toolchain: ZyCromerZ Clang 16.0.6
 #   By: Aciss
 # ================================================================
 
@@ -41,8 +41,8 @@ DEFCONFIG="vendor/courbet_defconfig"
 # ── Toolchain Config ─────────────────────────────────────────────
 
 CLANG_DIR="$KERNEL_DIR/clang"
-CLANG_URL="https://github.com/Gonon-Kernel/gonon-clang/releases/download/16.0.6-20231104-release/GononClang-16.0.6-20231104.tar.xz"
-CLANG_ARCHIVE="$KERNEL_DIR/GononClang.tar.xz"
+CLANG_URL="https://github.com/ZyCromerZ/Clang/releases/download/16.0.6-20260716-release/Clang-16.0.6-20260716.tar.gz"
+CLANG_ARCHIVE="$KERNEL_DIR/Clang-16.0.6-20260716.tar.gz"
 
 export ARCH=arm64
 export SUBARCH=arm64
@@ -146,13 +146,13 @@ echo " Builder : $KBUILD_BUILD_USER@$KBUILD_BUILD_HOST"
 echo " Output  : $ZIPNAME"
 echo "================================================"
 
-# ── Toolchain: Gonon Clang ───────────────────────────────────────
+# ── Toolchain: ZyCromerZ Clang ───────────────────────────────────────
 
 echo
-echo "Checking Gonon Clang 16.0.6..."
+echo "Checking ZyCromerZ Clang 16.0.6..."
 
 if [ ! -x "$CLANG_DIR/bin/clang" ]; then
-    echo "Downloading Gonon Clang 16.0.6..."
+    echo "Downloading ZyCromerZ Clang 16.0.6..."
 
     mkdir -p "$CLANG_DIR" ||
         tg_fail "Cannot create clang directory"
@@ -160,12 +160,12 @@ if [ ! -x "$CLANG_DIR/bin/clang" ]; then
     curl -fL --retry 3 --connect-timeout 20 \
         "$CLANG_URL" \
         -o "$CLANG_ARCHIVE" ||
-        tg_fail "Gonon Clang download failed"
+        tg_fail "ZyCromerZ Clang download failed"
 
-    echo "Extracting Gonon Clang..."
+    echo "Extracting ZyCromerZ Clang..."
 
-    tar -xJf "$CLANG_ARCHIVE" -C "$CLANG_DIR" ||
-        tg_fail "Gonon Clang extraction failed"
+    tar -xzf "$CLANG_ARCHIVE" -C "$CLANG_DIR" ||
+        tg_fail "ZyCromerZ Clang extraction failed"
 
     rm -f "$CLANG_ARCHIVE"
 fi
@@ -197,7 +197,7 @@ Device: $DEVICE_NAME
 Codename: $DEVICE
 Kernel Version: $KERNEL_VERSION
 Root: $ROOT
-Compiler: Gonon $CLANG_VERSION"
+Compiler: ZyCromerZ $CLANG_VERSION"
 
 # ── Step 1: Clean ────────────────────────────────────────────────
 

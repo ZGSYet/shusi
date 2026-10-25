@@ -777,7 +777,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu0_cdev_skin {
-				trip = <&cpu0_config-skin>;
+				trip = <&cpu0_config_skin>;
 				cooling-device =
 					<&CPU0 0 THERMAL_MAX_LIMIT>;
 			};
@@ -810,7 +810,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu1_cdev_skin {
-				trip = <&cpu1_config-skin>;
+				trip = <&cpu1_config_skin>;
 				cooling-device =
 					<&CPU1 0 THERMAL_MAX_LIMIT>;
 			};
@@ -843,7 +843,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu2_cdev_skin {
-				trip = <&cpu2_config-skin>;
+				trip = <&cpu2_config_skin>;
 				cooling-device =
 					<&CPU2 0 THERMAL_MAX_LIMIT>;
 			};
@@ -876,7 +876,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu3_cdev_skin {
-				trip = <&cpu3_config-skin>;
+				trip = <&cpu3_config_skin>;
 				cooling-device =
 					<&CPU3 0 THERMAL_MAX_LIMIT>;
 			};
@@ -909,7 +909,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu4_cdev_skin {
-				trip = <&cpu4_config-skin>;
+				trip = <&cpu4_config_skin>;
 				cooling-device =
 					<&CPU4 0 THERMAL_MAX_LIMIT>;
 			};
@@ -942,7 +942,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu5_cdev_skin {
-				trip = <&cpu5_config-skin>;
+				trip = <&cpu5_config_skin>;
 				cooling-device =
 					<&CPU5 0 THERMAL_MAX_LIMIT>;
 			};
@@ -975,7 +975,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu6_cdev_skin {
-				trip = <&cpu6_0_config-skin>;
+				trip = <&cpu6_0_config_skin>;
 				cooling-device =
 					<&CPU6 0 THERMAL_MAX_LIMIT>;
 			};
@@ -1008,7 +1008,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu6_cdev_skin {
-				trip = <&cpu6_1_config-skin>;
+				trip = <&cpu6_1_config_skin>;
 				cooling-device =
 					<&CPU6 0 THERMAL_MAX_LIMIT>;
 			};
@@ -1041,7 +1041,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu7_cdev_skin {
-				trip = <&cpu7_0_config-skin>;
+				trip = <&cpu7_0_config_skin>;
 				cooling-device =
 					<&CPU7 0 THERMAL_MAX_LIMIT>;
 			};
@@ -1074,7 +1074,7 @@
 						THERMAL_MAX_LIMIT>;
 			};
 			cpu7_cdev_skin {
-				trip = <&cpu7_1_config-skin>;
+				trip = <&cpu7_1_config_skin>;
 				cooling-device =
 					<&CPU7 0 THERMAL_MAX_LIMIT>;
 			};

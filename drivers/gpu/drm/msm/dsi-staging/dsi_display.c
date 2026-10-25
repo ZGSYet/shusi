@@ -7859,13 +7859,9 @@ int dsi_display_enable(struct dsi_display *display)
 		}
 
 		rc = dsi_panel_switch(display->panel);
-		if (rc) {
-			pr_err("[%s] CRITICAL: Cannot switch resolution: "
-			       "rc = %d - Returning failure and "
-			       "hoping for DSI recovery...\n",
+		if (rc)
+			pr_warn("[%s] Cannot switch resolution: rc=%d, keeping current mode\n",
 				display->name, rc);
-			return rc;
-		}
 
 		return 0;
 	}
